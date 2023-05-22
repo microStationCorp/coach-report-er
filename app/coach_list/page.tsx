@@ -1,6 +1,8 @@
 import { SingleItem } from "@/components/singleitem";
 import { prisma } from "@/utils/prisma";
 
+export const dynamic = "force-dynamic";
+
 const getCoaches = async () => {
   const coaches = await prisma.coaches.findMany({
     orderBy: {
