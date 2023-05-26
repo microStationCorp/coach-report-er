@@ -105,6 +105,7 @@ export default function AddCoach() {
                   {error.errorMsg}
                 </div>
               ) : null}
+
               <div className="border border-slate-400 px-2 font-semibold p-1 rounded-md">
                 <ErrorMsgComp name="base" />
                 <ErrorMsgComp name="coach_number" />
