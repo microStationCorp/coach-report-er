@@ -95,17 +95,17 @@ export default function AddCoach() {
                 </button>
               </div>
               {data?.success ? (
-                <div className="uppercase bg-green-300 text-green-800 p-1 rounded-md">
+                <div className="uppercase border border-slate-400 text-green-400 px-2 font-semibold text-sm p-1 rounded-md">
                   submittted {data.coaches?.base}-{data.coaches?.coach_number}-
                   {data.coaches?.coach_type}
                 </div>
               ) : null}
               {error?.errorStat ? (
-                <div className="uppercase bg-red-300 text-red-800 p-1 rounded-md">
+                <div className="uppercase border border-slate-400 text-red-600 px-2 font-semibold p-1 rounded-md">
                   {error.errorMsg}
                 </div>
               ) : null}
-              <div>
+              <div className="border border-slate-400 px-2 font-semibold p-1 rounded-md">
                 <ErrorMsgComp name="base" />
                 <ErrorMsgComp name="coach_number" />
                 <ErrorMsgComp name="coach_type" />
@@ -121,7 +121,7 @@ export default function AddCoach() {
 const ErrorMsgComp = ({ name }: { name: string }) => {
   return (
     <ErrorMessage name={name}>
-      {(msg) => <div className="text-sm text-red-600">*{msg}</div>}
+      {(msg) => <div className="text-sm text-red-600">* {msg}</div>}
     </ErrorMessage>
   );
 };

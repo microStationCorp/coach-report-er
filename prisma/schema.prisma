@@ -11,12 +11,44 @@ datasource db {
 }
 
 model Coaches {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  created_at   DateTime @default(now())
-  base         String
-  coach_number String
-  coach_type   String
-  rake_type    String
-  p_date       String? 
-  r_date       String?
+  id                String                  @id @default(auto()) @map("_id") @db.ObjectId
+  created_at        DateTime                @default(now())
+  base              String
+  coach_number      String
+  coach_type        String
+  rake_type         String
+  p_date            String?
+  r_date            String?
+  LhbCoachEquipment LhbCoachEquipmentTable?
+  SgCoachEquipment  SgCoachEquipmentTable?
+}
+
+model LhbCoachEquipmentTable {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  created_at      DateTime @default(now())
+  rmpu_package    String?
+  rbc             String?
+  ebc             String?
+  erbc            String?
+  refrigarent     String?
+  condenser_motor String?
+  microprocessor  String?
+  cell            String?
+  Coaches         Coaches  @relation(fields: [coachesId], references: [id], onDelete: Cascade)
+  coachesId       String   @unique @db.ObjectId
+}
+
+model SgCoachEquipmentTable {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  created_at      DateTime @default(now())
+  ac_plant        String?
+  inverter        String?
+  rru             String?
+  alternator      String?
+  cell            String?
+  battery_charger String?
+  refrigarent     String?
+  condenser_motor String?
+  Coaches         Coaches  @relation(fields: [coachesId], references: [id], onDelete: Cascade)
+  coachesId       String   @unique @db.ObjectId
 }
